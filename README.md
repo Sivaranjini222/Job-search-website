@@ -1,8 +1,8 @@
 ## Job portal
 
-AA web-based job portal developed using ASP.NET MVC where companies can register, post jobs, and users can search and apply for jobs.
+A web-based job portal developed using ASP.NET MVC where companies can register, post jobs, and users can search and apply for jobs.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Asp.net MVC
 - C#
@@ -26,7 +26,7 @@ AA web-based job portal developed using ASP.NET MVC where companies can register
 - Application Status
 - Database Management
 
-## database
+## Database
 - Microsoft SQL Server
 - Entity Framework / EDMX
 - Stored Procedures

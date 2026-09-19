@@ -1,0 +1,127 @@
+﻿@model mvcproject.Models.userinsert
+@{
+    ViewBag.Title = "userregpageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>user registration</h2>
+<div>
+    @using (Html.BeginForm("insertclick", "userreg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Name</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+
+
+
+        <div>
+            <label>address</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+
+        <div>
+            <label>email</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+        <div>
+            <label>Gender</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.gender)
+            @Html.ValidationMessageFor(m => m.gender)
+        </div>
+        <div>
+            <label>DOB</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.dob)
+            @Html.ValidationMessageFor(m => m.dob)
+        </div>
+        <div>
+            <label>phone </label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.phone)
+            @Html.ValidationMessageFor(m => m.phone)
+        </div>
+
+        <div>
+            <label>Image</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+
+        </div>
+
+        <div>
+            <label>skills </label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.skills)
+            @Html.ValidationMessageFor(m => m.skills)
+        </div>
+        <div>
+            <label>experience </label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.experience)
+            @Html.ValidationMessageFor(m => m.experience)
+        </div>
+        <div>
+            <label>Education </label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.education)
+            @Html.ValidationMessageFor(m => m.education)
+        </div>
+        <div>
+            <label>status </label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.status)
+            @Html.ValidationMessageFor(m => m.status)
+        </div>
+
+        <div>
+
+
+            <label>username</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.username)
+            @Html.ValidationMessageFor(m => m.username)
+
+        </div>
+        <div>
+            <label>password</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.pass)
+
+        </div>
+
+        <div>
+            <label> confirm password</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.cpassword)
+            @Html.ValidationMessageFor(m => m.cpassword)
+
+        </div>
+        <div>
+            <input type="submit" value="insert" />
+            @Html.DisplayFor(m => m.usermsg)
+        </div>
+
+    }
+</div>

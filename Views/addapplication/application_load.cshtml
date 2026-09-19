@@ -1,0 +1,62 @@
+﻿@model mvcproject.Models.applicationcls
+@{
+    ViewBag.Title = "application_load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="row">
+        <div class="column">
+            <h2 style="text-align:center">Job Application</h2>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div style="color:red;">
+                    @Html.ValidationSummary(false)
+                </div>
+            }
+
+            <table>
+                @foreach (var item in Model.selectjobdetails)
+                {
+                    <tr><td><h2><b>@Html.DisplayFor(modelitem => item.jobtitle)</b></h2></td></tr>
+                    <tr><td><label>Description:</label> @Html.DisplayFor(modelitem => item.jobdesc)</td></tr>
+                    <tr><td><label>Job Type:</label> @Html.DisplayFor(modelitem => item.jobtype)</td></tr>
+                    <tr><td><label>Experience:</label> @Html.DisplayFor(modelitem => item.jobexperience)</td></tr>
+                    <tr><td><label>Skills:</label> @Html.DisplayFor(modelitem => item.jobskills)</td></tr>
+                    <tr><td><label>Salary:</label> @Html.DisplayFor(modelitem => item.jobsalary)</td></tr>
+                    <tr><td><label>Location:</label> @Html.DisplayFor(modelitem => item.joblocation)</td></tr>
+                    <tr><td><label>End date:</label> @item.enddate.ToString("MM/dd/yyyy")</td></tr>
+                }
+            </table>
+            <br />
+
+            @using (Html.BeginForm("application_click", "addapplication", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Add Resume</label>
+                                <input type="file" name="file" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        @if (ViewBag.isapplied == 1)
+                        {
+                            <td>
+                                <input id="Button1" type="button" value="already applied" class="button" style="text-align:center" disabled="disabled" />
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <input id="Submit1" type="submit" value="submit your application" class="button" style="text-align:center" />
+                            </td>
+                        }
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+</div>

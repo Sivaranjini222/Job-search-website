@@ -1,0 +1,54 @@
+﻿@model mvcproject.Models.companyhome
+@{
+    ViewBag.Title = "applyjob";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Apply for: @Model.jobtitle</h2>
+
+<dl class="dl-horizontal">
+    <dt>Company</dt>
+    <dd>@Model.compid</dd>
+
+    <dt>Description</dt>
+    <dd>@Model.jobdescription</dd>
+
+    <dt>Type</dt>
+    <dd>@Model.jobtype</dd>
+
+    <dt>Experience</dt>
+    <dd>@Model.jobexperience</dd>
+
+    <dt>Location</dt>
+    <dd>@Model.joblocation</dd>
+
+    <dt>Salary</dt>
+    <dd>@Model.jobsalary</dd>
+
+    <dt>End Date</dt>
+    <dd>@Model.enddate.ToShortDateString()</dd>
+</dl>
+
+@using (Html.BeginForm("submitapplication", "viewjobpost", FormMethod.Post))
+{
+    @Html.Hidden("jobid", Model.jobid)
+
+    <div class="form-group">
+        <label>Your Name</label>
+        @Html.TextBox("applicantname", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBox("applicantemail", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Resume / Cover Note</label>
+        @Html.TextArea("coverletter", null, new { @class = "form-control", rows = 5 })
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Application</button>
+}
+

@@ -1,0 +1,62 @@
+﻿
+@model mvcproject.Models.jobsearch
+@{
+    ViewBag.Title = "viewjobpost_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<h2>Available Jobs</h2>
+
+@using (Html.BeginForm("searchjob_click", "viewjobpost", FormMethod.Post))
+{
+    <p>
+        Experience: @Html.TextBoxFor(m => m.insertse.jobexperience)
+        Skills: @Html.TextBoxFor(m => m.insertse.jobskills)
+        Location: @Html.TextBoxFor(m => m.insertse.joblocation)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Experience</th>
+            <th>skills</th>
+            <th>Location</th>
+            <th>Salary</th>
+            <th>End Date</th>
+            <th>Apply</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.selectjob != null && Model.selectjob.Any())
+        {
+            foreach (var item in Model.selectjob)
+            {
+                <tr>
+                    <td>@item.jobtitle</td>
+                    <td>@item.jobdescription</td>
+                    <td>@item.jobtype</td>
+                    <td>@item.jobexperience</td>
+                    <td>@item.jobskills</td>
+                    <td>@item.joblocation</td>
+                    <td>@item.jobsalary</td>
+                    <td>@item.enddate.ToShortDateString()</td>
+                    <td>
+                        @Html.ActionLink("Apply now", "application_load", "addapplication", new { jid = item.jobid}, new {@class="button"})
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="8">No jobs found.</td></tr>
+        }
+    </tbody>
+</table>

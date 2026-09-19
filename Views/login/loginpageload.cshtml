@@ -1,0 +1,35 @@
+﻿@model mvcproject.Models.userlogin
+@{
+    ViewBag.Title = "loginpageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>loginpageload</h2>
+<div>
+    @using (Html.BeginForm("loginclick", "login", FormMethod.Post))
+     {
+        <div>
+            <label>username</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uname)
+            @Html.ValidationMessageFor(m => m.uname)
+        </div>
+
+        <div>
+            <label>password</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.pwd)
+            @Html.ValidationMessageFor(m => m.pwd)
+        </div>
+
+        <div>
+            <input type="submit" value="insert" />
+            @Html.DisplayFor(m => m.msg)
+        </div>
+     }
+
+</div>
+
+
